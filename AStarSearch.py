@@ -3,7 +3,7 @@ import math
 
 map_width = 10
 map_height = 6
-map_sample = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+map_sample1 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
               [1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
               [1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
               [1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
@@ -67,7 +67,7 @@ class Node():
 
 
 class State:
-    map_sample = []
+    map_sample1 = []
     map_width = 0
     map_height = 0
     start_node = Node()
