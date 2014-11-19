@@ -1,3 +1,5 @@
+from EditDistance.Transform import dpa
+
 __author__ = 'Tong'
 
 
@@ -12,11 +14,11 @@ def test_stone(filename):
     ans = calc_distance(x, y)
     file_handler.write(ans.__str__() + "\n")
     file_handler.close()
-    pass
 
 
 # TODO You should implement a dynamic-programming algorithms and print the optimal operation sequence to the console.
 def calc_distance(x, y):
+    dpa(x, y)
     return 0
 
 
