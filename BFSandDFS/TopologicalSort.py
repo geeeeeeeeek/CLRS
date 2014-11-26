@@ -29,8 +29,6 @@ class Graph:
 
 def dfs(vertex):
     global degree, stack, graph
-    if vertex.data == "Discrete Mathematics":
-        a = 1
     stack.append(vertex)
     vertex.stack_in = degree
     degree += 1
