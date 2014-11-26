@@ -1,0 +1,17 @@
+[Calculus] : in = 31, out = 34
+[Probability and Statistics] : in = 32, out = 33
+[Discrete Mathematics] : in = 29, out = 30
+[Computer Systems] : in = 23, out = 28
+[Computer Architecture] : in = 26, out = 27
+[Computer Network] : in = 24, out = 25
+[Database] : in = 21, out = 22
+[Java or C++] : in = 7, out = 20
+[Data Structure and Algorithm] : in = 18, out = 19
+[Object Oriented Programming] : in = 10, out = 17
+[Software Engineering] : in = 11, out = 16
+[Intelligent Systems] : in = 14, out = 15
+[Project Management] : in = 12, out = 13
+[Web Application] : in = 8, out = 9
+[ALL COURSES] : in = 1, out = 6
+[Internship] : in = 2, out = 5
+[Thesis] : in = 3, out = 4
