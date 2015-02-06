@@ -10,6 +10,9 @@ class Solution:
             result ^= n
         return result
 
+# Explanation of the algorithm #
+# Since the result of 'xor' two same numbers is 0,
+# 'xor' each element and we get the only single number.
 
 solution = Solution().singleNumber([1, 1, 2, 4, 2, 3, 4])
 print(solution)
