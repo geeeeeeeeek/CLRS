@@ -5,15 +5,12 @@ class Solution:
     # @param A, a list of integer
     # @return an integer
     def singleNumber(self, A):
-        d = {}
-        for a in A:
-            if not d.get(a):
-                d[a] = True
-            else:
-                d.pop(a)
-        for key in d.keys():
-            return key
+        n = len(A) - 1
+        while 0 < n:
+            A[n - 1] ^= A[n]
+            n -= 1
+        return A[0]
 
 
-solution = Solution().singleNumber([1, 2, 3, 3, 2, 1, 4])
+solution = Solution().singleNumber([1, 1, 2, 4, 2, 3, 4])
 print(solution)
