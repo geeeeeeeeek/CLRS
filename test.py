@@ -1,3 +1,2 @@
-import random
-
-print(random.choice('qwertyuiopasdfghjklzxcvbnm'))
+t = [1] *3
+print(t)
