@@ -19,16 +19,13 @@ class Solution:
     def isSameTree(self, p, q):
         if not p and not q:
             return True
-        elif (not p) ^ (not q) or p.val != q.val or (not p.left) ^ (not q.left) or (not p.right) ^ (not q.right):
+        elif (not p) ^ (not q):
             return False
 
-        if p.left and q.left and not self.isSameTree(p.left, q.left):
+        if p.val != q.val or (not p.left) ^ (not q.left) or (not p.right) ^ (not q.right):
             return False
 
-        if p.right and q.right and not self.isSameTree(p.right, q.right):
-            return False
-
-        return True
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
 
 a = TreeNode(1)
