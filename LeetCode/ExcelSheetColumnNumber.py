@@ -17,10 +17,10 @@ class Solution:
     # @return an integer
     def titleToNumber(self, s):
         total = 0
-        s = s[::-1]
-        for i in range(len(s)):
-            total += (ord(s[i]) - 64) * pow(26, i)
+        l = len(s)
+        for i in range(l):
+            total += (ord(s[l - i - 1]) - 64) * pow(26, i)
         return total
 
 
-print(Solution().titleToNumber("AAA"))
+print(Solution().titleToNumber("A"))
