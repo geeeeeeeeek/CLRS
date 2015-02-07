@@ -14,11 +14,16 @@ __author__ = 'Tong'
 class Solution:
     # @return a string
     def convertToTitle(self, num):
-        if num <= 26:
-            return chr(num + 64)
-        if num % 26 == 0:
-            return self.convertToTitle(int(num / 26) - 1) + "Z"
-        return self.convertToTitle(int(num / 26)) + chr(num % 26 + 64)
+        title = ""
+        while num > 26:
+            if num % 26 == 0:
+                title = "Z" + title
+                num = int(num / 26) - 1
+            else:
+                title = chr(num % 26 + 64) + title
+                num = int(num / 26)
+        title = chr(num + 64) + title
+        return title
 
 
-print(Solution().convertToTitle(52))
+print(Solution().convertToTitle(28))
