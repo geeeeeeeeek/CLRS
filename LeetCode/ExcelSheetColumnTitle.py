@@ -15,14 +15,13 @@ class Solution:
     # @return a string
     def convertToTitle(self, num):
         title = ""
-        while num > 26:
+        while num > 0:
             if num % 26 == 0:
                 title = "Z" + title
-                num = int(num / 26) - 1
+                num = num // 26 - 1
             else:
                 title = chr(num % 26 + 64) + title
-                num = int(num / 26)
-        title = chr(num + 64) + title
+                num //= 26
         return title
 
 
