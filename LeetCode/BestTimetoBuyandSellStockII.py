@@ -16,24 +16,18 @@ class Solution:
         bought = False
         for i in range(len(prices) - 1):
             if prices[i + 1] > prices[i]:
-                if bought:
-                    pass
-                    # print("Day " + i.__str__() + ": Hold")
-                else:
+                if not bought:
+                    # Buy
                     profit -= prices[i]
                     bought = True
-                    # print("Day " + i.__str__() + ": Bought")
             else:
                 if bought:
+                    # Sale
                     profit += prices[i]
                     bought = False
-                    # print("Day " + i.__str__() + ": Sold")
-                else:
-                    pass
-                    # print("Day " + i.__str__() + ": Hold")
 
         if bought:
-            # print("Day " + (len(prices) - 1).__str__() + ": Sold")
+            # Sale
             return profit + prices[-1]
         else:
             return profit
