@@ -16,11 +16,9 @@ class Solution:
     # @param s, a string
     # @return an integer
     def titleToNumber(self, s):
-        total = 0
-        l = len(s)
-        for i in range(l):
-            total += (ord(s[l - i - 1]) - 64) * pow(26, i)
-        return total
+        if len(s) == 1:
+            return ord(s) - 64
+        return ord(s[-1]) - 64 + self.titleToNumber(s[:-1]) * 26
 
 
-print(Solution().titleToNumber("A"))
+print(Solution().titleToNumber("AB"))
