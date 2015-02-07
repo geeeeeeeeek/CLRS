@@ -16,14 +16,11 @@ class Solution:
     # @param head, a ListNode
     # @return a boolean
     def hasCycle(self, head):
-        if not head:
-            return False
-        node = head
-        while node and node.next:
-            if node.val == node.next.val:
+        while head and head.next:
+            if head.val == head.next.val:
                 return True
-            node.next = node.next.next
-            node = node.next
+            head.next = head.next.next
+            head = head.next
         return False
 
 
@@ -34,4 +31,4 @@ a.next.next.next = ListNode(-1)
 a.next.next.next.next = a.next
 
 print(Solution().hasCycle(a))
-# print(Solution().hasCycle(None))
+print(Solution().hasCycle(None))
