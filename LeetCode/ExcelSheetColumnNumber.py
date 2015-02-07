@@ -21,4 +21,4 @@ class Solution:
         return ord(s[-1]) - 64 + self.titleToNumber(s[:-1]) * 26
 
 
-print(Solution().titleToNumber("AB"))
+print(Solution().titleToNumber("A"))
