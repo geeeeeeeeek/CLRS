@@ -10,27 +10,10 @@ class Solution:
     # @param prices, a list of integer
     # @return an integer
     def maxProfit(self, prices):
-        if not prices:
-            return 0
         profit = 0
-        bought = False
         for i in range(len(prices) - 1):
-            if prices[i + 1] > prices[i]:
-                if not bought:
-                    # Buy
-                    profit -= prices[i]
-                    bought = True
-            else:
-                if bought:
-                    # Sale
-                    profit += prices[i]
-                    bought = False
-
-        if bought:
-            # Sale
-            return profit + prices[-1]
-        else:
-            return profit
+            profit += max(prices[i + 1] - prices[i], 0)
+        return profit
 
 
 print(Solution().maxProfit([2, 1]))
