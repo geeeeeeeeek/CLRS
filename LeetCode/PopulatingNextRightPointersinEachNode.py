@@ -46,18 +46,15 @@ class Solution:
     def connect(self, root):
         if not root:
             return
-        if root.left and root.right:
-            root.left.next = root.right
-            self.connect(root.left)
-            self.connect(root.right)
-            left = root.left
-            right = root.right
-            while left and left.left:
-                left = left.right
-                right = right.left
-                left.next = right
-
-        return root
+        left = root.left
+        right = root.right
+        self.connect(left)
+        self.connect(right)
+        while left:
+            left.next = right
+            left = left.right
+            right = right.left
+        # return root
 
 
 t = TreeNode(-1)
