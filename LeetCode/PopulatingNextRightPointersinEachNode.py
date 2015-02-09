@@ -44,8 +44,7 @@ class Solution:
     # @param root, a tree node
     # @return nothing
     def connect(self, root):
-        if not root:
-            return
+        if not root: return
         left = root.left
         right = root.right
         self.connect(left)
@@ -54,7 +53,7 @@ class Solution:
             left.next = right
             left = left.right
             right = right.left
-        # return root
+            # return root
 
 
 t = TreeNode(-1)
