@@ -6,26 +6,50 @@ __author__ = 'Tong'
 
 class Solution:
     # @return an integer
-    n = 0
-    count = 0
-
     def totalNQueens(self, n):
-        self.n = n
-        self.queen(0, [-1] * n)
-        return self.count
+        if n == 0:
+            return 0
+        row = 0
+        col = 0
+        board = [-1] * n
+        count = 0
 
-    def queen(self, row, board):
-        if row == self.n:
-            self.count += 1
-            return
-        for c in range(self.n):
-            if self.canPlace(row, c, board):
-                board[row] = c
-                self.queen(row + 1, board)
-            board[row] = -1
+        while True:
+            if row == n:
+                count += 1
+                row -= 1
+                while board[row] == n - 1:
+                    if row == 0:
+                        return count
+                    board[row] = -1
+                    row -= 1
+
+                col = board[row] + 1
+                board[row] = -1
+                continue
+
+            if self.canPlace(row, col, board):
+                board[row] = col
+                row += 1
+                col = 0
+            elif col == n - 1:
+                board[row] = -1
+                row -= 1
+
+                while board[row] == n - 1:
+                    if row == 0:
+                        return count
+                    board[row] = -1
+                    row -= 1
+
+                col = board[row] + 1
+                board[row] = -1
+            else:
+                col += 1
+        return count
 
     def canPlace(self, row, col, board):
-        for i in range(self.n):
+        for i in range(len(board)):
             if i != row and board[i] != -1 and (col == board[i] or abs(board[i] - col) == abs(i - row)):
                 return False
         return True
