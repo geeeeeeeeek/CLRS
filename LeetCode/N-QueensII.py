@@ -6,9 +6,12 @@ __author__ = 'Tong'
 
 class Solution:
     # @return an integer
+    n = 0
+
     def totalNQueens(self, n):
         if n == 0:
             return 0
+        self.n = n
         row = 0
         col = 0
         board = [-1] * n
@@ -49,10 +52,11 @@ class Solution:
         return count
 
     def canPlace(self, row, col, board):
-        for i in range(len(board)):
-            if i != row and board[i] != -1 and (col == board[i] or abs(board[i] - col) == abs(i - row)):
+        for i in range(self.n):
+            if board[i] != -1 and i != row and (col == board[i] or abs(board[i] - col) == abs(i - row)):
                 return False
         return True
 
 
-print(Solution().totalNQueens(0))
+for i in range(13):
+    print("case " + i.__str__() + " : result = " + Solution().totalNQueens(i).__str__())
