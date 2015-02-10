@@ -6,21 +6,57 @@ __author__ = 'Tong'
 
 class Solution:
     # @return an integer
+    n = 0
 
     def totalNQueens(self, n):
-        if n == 0: return 0
-        if n == 1: return 1
-        if n == 2: return 0
-        if n == 3: return 0
-        if n == 4: return 2
-        if n == 5: return 10
-        if n == 6: return 4
-        if n == 7: return 40
-        if n == 8: return 92
-        if n == 9: return 352
-        if n == 10: return 724
-        if n == 11: return 2680
+        if n == 0:
+            return 0
+        self.n = n
+        row = 0
+        col = 0
+        board = [-1] * n
+        count = 0
+
+        while True:
+            if row == n:
+                count += 1
+                row -= 1
+                while board[row] == n - 1:
+                    if row == 0:
+                        return count
+                    board[row] = -1
+                    row -= 1
+
+                col = board[row] + 1
+                board[row] = -1
+                continue
+
+            if self.canPlace(row, col, board):
+                board[row] = col
+                row += 1
+                col = 0
+            elif col == n - 1:
+                board[row] = -1
+                row -= 1
+
+                while board[row] == n - 1:
+                    if row == 0:
+                        return count
+                    board[row] = -1
+                    row -= 1
+
+                col = board[row] + 1
+                board[row] = -1
+            else:
+                col += 1
+        return count
+
+    def canPlace(self, row, col, board):
+        for i in range(self.n):
+            if board[i] != -1 and i != row and (col == board[i] or abs(board[i] - col) == abs(i - row)):
+                return False
+        return True
 
 
-for i in range(12):
-    print("if n = " + i.__str__() + " : return " + Solution().totalNQueens(i).__str__())
+for i in range(8):
+    print("case " + i.__str__() + " : result = " + Solution().totalNQueens(i).__str__())
