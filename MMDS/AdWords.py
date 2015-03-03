@@ -34,21 +34,20 @@ def init_test_set():
 def ad_words():
     advertisers, clicks = init_test_set()
 
-    slots = [None] * 3
-
-    rou = 0
+    phrase = 0
 
     # each phase
     while clicks > 0:
-        print("Round " + rou.__str__() + ":")
+        print("Phrase " + phrase.__str__() + ":")
 
+        slots = [None] * 3
         # assign advertisers to each slot considering their bids
         for s in range(len(slots)):
             opt_bid = 0
             opt_advertiser = None
             for advertiser in advertisers:
                 bid = advertiser.bid * advertiser.ctr[s]
-                if advertiser not in slots and opt_bid < bid <= advertiser.budget:
+                if advertiser not in slots and opt_bid < bid and advertiser.budget >= advertiser.bid:
                     opt_bid = bid
                     opt_advertiser = advertiser
             slots[s] = opt_advertiser
@@ -64,7 +63,7 @@ def ad_words():
 
         # run the bidding until one advertiser run out of budget
         for s in range(len(slots)):
-            each_clicks = int(total_clicks * slots[s].ctr[s])
+            each_clicks = round(total_clicks * slots[s].ctr[s])
             slots[s].budget -= each_clicks * slots[s].bid
             slots[s].clicks += each_clicks
             clicks -= each_clicks
@@ -73,7 +72,7 @@ def ad_words():
         for slot in slots:
             print(slot)
 
-        rou += 1
+        phrase += 1
     print("\n\n++All clicks obtained.")
     for advertiser in advertisers:
         print(advertiser)
