@@ -1,3 +1,4 @@
+__author__ = 'Tong'
 import math
 
 n = 1000
