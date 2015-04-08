@@ -22,5 +22,5 @@ class Solution:
         num.append(float("-inf"))
         num.insert(0, float("-inf"))
         for i in range(1, len(num) - 1):
-            if num[i] > num[i - 1] and num[i] > num[i + 1]:
+            if num[i] > num[i + 1]:
                 return i - 1
